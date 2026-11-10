@@ -34,5 +34,12 @@ for prediction in carbon_forecast.values():
         lowest_carbon_intensity = prediction["carbon_intensity"]
         cleanest_time = prediction["time"]
 
+current_carbon_intensity = carbon_forecast["prediction_1"]["carbon_intensity"]
+
+if current_carbon_intensity != 0:
+    reduction_percentage = ((current_carbon_intensity - lowest_carbon_intensity) / current_carbon_intensity) * 100
+else:
+    reduction_percentage = 0
 
 print(f"Cleaner window detected: {cleanest_time} with a carbon intensity of {lowest_carbon_intensity}.")
+print(f"Potential carbon intensity reduction: {reduction_percentage:.2f}%")
